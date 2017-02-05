@@ -22,18 +22,21 @@
                 class="span3"
                 style='margin-left:10px;'>
                   <div
-                  ng-repeat='hat in catagories'
+                  ng-repeat='hat in hatchery'
                   class="thumbnail"
                   data-drop="true"
-                  ng-model='hat[$index]'
+                  ng-model='hat'
                   jqyoui-droppable="{multiple:true}">
                     <div class="caption">
                       <div
+                      ng-drop='active()'
                       class="btn btn-info btn-draggable"
                       ng-repeat="cat in hat"
+                      ng-model='hat'
                       data-drag="{{cat.drag}}"
                       data-jqyoui-options="{revert: 'invalid'}"
                       jqyoui-draggable="{index: {{$index}},animate:true}"
+
                       >{{cat.name}}</div>
                     </div>
                   </div>

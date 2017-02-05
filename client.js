@@ -1,7 +1,7 @@
 var App = angular.module('drag-and-drop', ['ngDragDrop']);
 
 App.controller('applicationManager', function($scope, $timeout) {
-  $scope.catagories = [];
+  $scope.hatchery = [];
   $scope.applied = [
     { 'name': 'Patrick Stewart', 'drag': true },
     { 'name': 'Nathan Fillion', 'drag': true },
@@ -20,10 +20,10 @@ App.controller('applicationManager', function($scope, $timeout) {
     { 'name': 'Avery Brooks', 'drag': true },
     { 'name': '	Harrison Ford', 'drag': true }
   ];
-  $scope.catagories.push($scope.applied);
-  $scope.catagories.push($scope.pending);
-  $scope.catagories.push($scope.scheduled);
-  $scope.catagories.push($scope.approved);
+  $scope.hatchery.push($scope.applied);
+  $scope.hatchery.push($scope.pending);
+  $scope.hatchery.push($scope.scheduled);
+  $scope.hatchery.push($scope.approved);
 
   $scope.active = function(){
     console.log("moved to active");
