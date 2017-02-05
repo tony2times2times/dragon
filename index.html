@@ -27,15 +27,16 @@
                   data-drop="true"
                   ng-model='hat'
                   jqyoui-droppable="{multiple:true}">
+
                     <div class="caption">
                       <div
-                      ng-drop='active()'
                       class="btn btn-info btn-draggable"
                       ng-repeat="cat in hat"
                       ng-model='hat'
                       data-drag="{{cat.drag}}"
+                      on-drop-success='actve()'
                       data-jqyoui-options="{revert: 'invalid'}"
-                      jqyoui-draggable="{index: {{$index}},animate:true}"
+                      jqyoui-draggable="{onDrop : active(), index: {{$index}},animate:true}"
 
                       >{{cat.name}}</div>
                     </div>
