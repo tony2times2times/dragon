@@ -1,6 +1,8 @@
+var init = 0;
 var App = angular.module('drag-and-drop', ['ngDragDrop']);
 
 App.controller('applicationManager', function($scope, $timeout) {
+  $scope.bucketList= ['APPLIED','PENDING','SCHEDULED','APPROVED'];
   $scope.hatchery = [];
   $scope.applied = [
     { 'name': 'Patrick Stewart', 'drag': true },
@@ -15,41 +17,40 @@ App.controller('applicationManager', function($scope, $timeout) {
     'drag': true,
     onDrop: 'dropCallback'
   },
-  ];
-  $scope.approved = [
-    { 'name': 'Avery Brooks', 'drag': true },
-    { 'name': '	Harrison Ford', 'drag': true }
-  ];
-  $scope.hatchery.push($scope.applied);
-  $scope.hatchery.push($scope.pending);
-  $scope.hatchery.push($scope.scheduled);
-  $scope.hatchery.push($scope.approved);
+];
+$scope.approved = [
+  { 'name': 'Avery Brooks', 'drag': true },
+  { 'name': '	Harrison Ford', 'drag': true }
+];
+$scope.hatchery.push($scope.applied);
+$scope.hatchery.push($scope.pending);
+$scope.hatchery.push($scope.scheduled);
+$scope.hatchery.push($scope.approved);
 
-  $scope.active = function(){
-    console.log("moved to active");
-  };
-
-  $scope.active = function(){
-  console.log("moved to active");
+//Controlls what happens when a object is moved into a array using that array's index
+$scope.incubator = function(index){
+  //This is used to prevent posting when webpage is initially loaded
+  if (init < $scope.hatchery.length){
+    init = init + 1;
+  }
+  //if item was moved into the applied array
+  else if (index === 0) {
+    console.log('Item moved into applied');
+  }
+  //if item was moved into the pending array
+  else if (index === 1) {
+    console.log('Item moved into pending');
+  }
+  //if item was moved into the scheduled array
+  else if (index === 2) {
+    console.log('Item moved into scheduled');
+  }
+  //if item was moved into the approved array
+  else if (index === 3) {
+    console.log('Item moved into approved');
+  }
+  else {
+    console.log(indext + " is not a recognized index please check the incubator function");
+  }
 };
-
-$scope.dropValidate = function(target, source) {
-  return target !== source;
-};
-
-function active() {
-  console.log( 'this is a thing');
-}
-
-
-  //   // Limit items to be dropped in list1
-  //   $scope.optionsList1 = {
-  //     accept: function(dragEl) {
-  //       if ($scope.list1.length >= 2) {
-  //         return false;
-  //       } else {
-  //         return true;
-  //       }
-  //     }
-  //   };
 });
